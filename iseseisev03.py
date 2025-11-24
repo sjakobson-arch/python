@@ -24,10 +24,6 @@ import random
 #suvaline
 # suvaline = random.randint()
 
-kujund = input("1)viisnurk \n2)ring \n3)ruut \n4)suvaline \nMillist kujundit soovid joonistada: ")
-arv = int(input("Mitu kujundit soovid joonistada?: "))
-# input("Soovid jätkata?: "
-
 kylg =90
 # viisnurk
 def viisnurk(kylg):
@@ -46,34 +42,46 @@ def ruut(kylg):
         turtle.lt(90)
 
 #suvaline
+# random.choice valib suvaliselt ühe kujundi kolmest.        
 def suvaline(kylg):
-    kujund(random.choice("1", "2", "3"))
-    arv(random.choice)
+    random.choice((viisnurk, ring, ruut))(kylg)
     
     
-# kujundite joonistamine   
-if kujund=="1":
+# kujundite joonistamine
+# while loop
+while True:
+# küsib kujundit
+    kujund = input("1)viisnurk \n2)ring \n3)ruut \n4)suvaline \nMillist kujundit soovid joonistada: ")
+# küsib kujundi arvu
+    arv = int(input("Mitu kujundit soovid joonistada?: "))
+# kujundite kordus(arv) ja liikumine joonistamisel
     for i in range(arv):
-        viisnurk(kylg)
-        turtle.lt(kylg * 1.5)
+        turtle.penup()
+        turtle.goto(random.randint(-300, 300),random.randint(-300, 300)) 
+        turtle.pendown()
+# valik    
+        if kujund=="1":
+            viisnurk(kylg)
         
-elif kujund=="2":
-    for i in range(arv):
-        ring(kylg)
-        turtle.lt(kylg * 1.5)
+        elif kujund=="2":
+            ring(kylg)
+       
         
-elif kujund=="3":
-    for i in range(arv):
-        ruut(kylg)
-        turtle.lt(kylg * 1.5)
+        elif kujund=="3":
+            ruut(kylg)
+       
         
-elif kujund=="4":
-    for i in range(arv):
-        suvaline(kylg)
+        elif kujund=="4":
+            suvaline(kylg)
     
-    
-else:
-    pass
+# vale vastuse sisestamisel    
+        else:
+            print("Valik puudub, pese silmad ära!")
+            break
+# programmi jätkamine, kirjutades kõike muud peale "ei", programm jätkub            
+    kysimus = input("Kas soovid jätkata?: ")
+    if kysimus=="ei":
+        break
         
 
 
